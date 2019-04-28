@@ -1,5 +1,5 @@
 # envman
-Envman (environment variable manager) is a simple tool which stores your environment variables so you can easily load them when you want to continue your work.
+Envman (environment variable manager) is a simple tool which stores your environment variables in the defined backend (e.g. GitHub Gist) so you can easily load them when you want to continue your work.
 
 ## Usage
 ```
