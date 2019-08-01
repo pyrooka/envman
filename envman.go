@@ -79,7 +79,7 @@ func getBackend(backendStr string) (backend.IBackend, error) {
 	}
 }
 
-func main() {
+func mainOld() {
 	// Load the config.
 	conf, err := config.Load()
 	if err != nil {
