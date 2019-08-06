@@ -83,8 +83,10 @@ func initConfig() {
 }
 
 func postRun(com *cobra.Command, args []string) {
+	// Write the config to file.
 	err := viper.WriteConfig()
 	if err != nil {
+		// If it's not found create a new one.
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok == true {
 			err = nil
 			err = viper.WriteConfigAs(".envman.yaml")
