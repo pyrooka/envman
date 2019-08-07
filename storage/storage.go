@@ -33,10 +33,6 @@ func SetStorage(name string) error {
 }
 
 // GetStorage returns the storage have been set for this session.
-func GetStorage() (IStorage, error) {
-	if currentStorage == nil {
-		return nil, errors.New("storage is unset")
-	}
-
-	return currentStorage, nil
+func GetStorage() IStorage {
+	return currentStorage
 }

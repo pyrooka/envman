@@ -52,8 +52,7 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
-	s, err := storage.GetStorage()
-	fmt.Println(s, err)
+
 	rootCmd.PersistentFlags().String("storage", "", "set the storage for use")
 }
 
@@ -83,6 +82,12 @@ func initConfig() {
 			os.Exit(1)
 		}
 	}
+
+	fmt.Println("mostjon")
+	fmt.Println(viper.GetString("storage"))
+	fmt.Println("ittvolt")
+
+	storage.SetStorage("local")
 }
 
 func postRun(com *cobra.Command, args []string) {
