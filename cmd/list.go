@@ -18,6 +18,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/pyrooka/envman/storage"
 	"github.com/spf13/cobra"
 )
 
@@ -27,7 +28,12 @@ var listCmd = &cobra.Command{
 	Short: "List your environments or variables",
 	Long:  `List your environment or the variables in an environment if an environment name is provided.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("list called")
+		s, err := storage.SelectStorage("local")
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Println(s.List(""))
 	},
 }
 
