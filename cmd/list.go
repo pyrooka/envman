@@ -16,24 +16,18 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
-	"github.com/pyrooka/envman/storage"
 	"github.com/spf13/cobra"
 )
 
 // listCmd represents the list command
 var listCmd = &cobra.Command{
-	Use:   "list",
-	Short: "List your environments or variables",
-	Long:  `List your environment or the variables in an environment if an environment name is provided.`,
+	Use:     "list",
+	Aliases: []string{"ls"},
+	Args:    cobra.MaximumNArgs(1),
+	Short:   "List your environments or variables",
+	Long:    `List your environment or the variables in an environment if an environment name is provided.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		s, err := storage.SelectStorage("local")
-		if err != nil {
-			panic(err)
-		}
 
-		fmt.Println(s.List(""))
 	},
 }
 

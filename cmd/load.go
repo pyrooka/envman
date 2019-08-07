@@ -23,8 +23,9 @@ import (
 
 // loadCmd represents the load command
 var loadCmd = &cobra.Command{
-	Use:   "load",
-	Short: "Load an environent",
+	Use:     "load",
+	Aliases: []string{"l"},
+	Short:   "Load an environent",
 	Long: `Load a previously saved environment to the current one.
 If the name of the environment not provided, the tool try to load one with the name of the current directory.`,
 	Run: func(cmd *cobra.Command, args []string) {

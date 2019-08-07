@@ -6,6 +6,8 @@ import (
 	"github.com/pyrooka/envman/storage/local"
 )
 
+var currentStorage IStorage
+
 // IStorage is an interface what show what should implement if you want to create a new storage service.
 type IStorage interface {
 	Init() (err error)                                         // Initialize the storage.
@@ -16,16 +18,25 @@ type IStorage interface {
 	CleanUp() (err error)                                      // Removes all the created things.
 }
 
-// SelectStorage returns a storage object based on the given string.
-func SelectStorage(storageName string) (IStorage, error) {
-	switch storageName {
+// SetStorage sets the storage to the global variable base on the given name.
+func SetStorage(name string) error {
+	switch name {
 	case "local":
-		l := local.Local{}
-		return &l, nil
+		currentStorage = &local.Local{}
 	case "githubgist":
-		g := local.Local{}
-		return &g, nil
+		currentStorage = &local.Local{}
 	default:
-		return nil, errors.New("storage not found")
+		return errors.New("storage not found")
 	}
+
+	return nil
+}
+
+// GetStorage returns the storage have been set for this session.
+func GetStorage() (IStorage, error) {
+	if currentStorage == nil {
+		return nil, errors.New("storage is unset")
+	}
+
+	return currentStorage, nil
 }

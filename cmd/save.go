@@ -23,8 +23,9 @@ import (
 
 // saveCmd represents the save command
 var saveCmd = &cobra.Command{
-	Use:   "save",
-	Short: "A brief description of your command",
+	Use:     "save",
+	Aliases: []string{"s"},
+	Short:   "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 

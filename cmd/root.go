@@ -19,6 +19,8 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/pyrooka/envman/storage"
+
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 
@@ -50,7 +52,8 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
-
+	s, err := storage.GetStorage()
+	fmt.Println(s, err)
 	rootCmd.PersistentFlags().String("storage", "", "set the storage for use")
 }
 
